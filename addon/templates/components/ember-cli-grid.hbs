@@ -1,0 +1,32 @@
+<h3>{{title}}</h3>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      {{#each headers1 as |f|}}
+        <th>{{f}}</th>
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |res|}}
+    <tr>
+      {{#each fields1 as |f|}}
+        {{#if (eq f "created_at")}}
+          <td> {{format-date res.attributes.created_at}} {{format-date res.created_at}} </td>
+        {{else}}
+          <td>{{get res.attributes f}}{{get res f}}</td>
+        {{/if}}
+      {{/each}}
+        <td>{{#link-to clickactionlink (query-params idd=res.id)}} {{clickaction}} {{/link-to}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+Page:{{currentpage}}
+<div class='pagebar'>
+  {{#each plinks as |time|}}
+    <button  {{action 'clickaction1' time}}>{{time}}</button>
+  {{/each}}
+</div>
+
+{{yield}}
