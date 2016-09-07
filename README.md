@@ -89,3 +89,5 @@ export default Ember.Route.extend({
    clickaction='view'
    clickactionlink='sample.view'}}
 ```
+* CSS
+Add bootstrapcss to your project or provide css for the appropriate selectors.
